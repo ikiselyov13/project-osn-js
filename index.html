@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        /*
+        //Урок 1
+
+        // Задание 1
+        
+        let tc = prompt ('Введите температуру по Цельсию');
+        let tf = (9 / 5) * tc + 32;
+        alert (tf);
+        
+        // Задание 2
+
+        let name = 'Василий';
+        let admin;
+        admin = name;
+        alert (admin);
+        */
+
+        // Урок 2
+
+        // Задание 3
+
+        /* 
+        let a = Number (prompt ('Введите первое целое число'));
+         let b = Number (prompt('Введите второе целое число'));
+ 
+         if (a >= 0 && b >= 0) {
+             alert (a - b);
+         } else if (a < 0 && b < 0) {
+             alert (a * b);
+         } else {
+             alert (a + b);
+         }
+         */
+
+        // Урок 3
+
+        // Задание 1
+
+        /*
+        let num = []; //Создал пустой массив.
+
+        for (let i = 0; i < 11; i = i + 1) {
+            num.push (i);
+        } //Заполнил его числами.
+        alert (num); //Вывел на экран.
+        
+        function iterateFn(num) {
+            if (num == 0) {
+                console.log(num + ' - это ноль');
+            } else if (num % 2 == 0) {
+                console.log(num + ' - это четное число');
+            } else {
+                console.log(num + ' - это нечетное число');
+            }
+        } //Функция определения четности.
+
+        num.forEach(iterateFn) //Перебор элементов массива.
+        */
+
+
+        //Задание 3
+
+        /*
+        const products = [
+                {
+                    id: 3,
+                    price: 200,
+                },
+                {
+                    id: 4,
+                    price: 900,
+                },
+                {
+                    id: 1,
+                    price: 1000,
+                },
+            ];
+
+
+        products.forEach (item => {
+            item.price = item.price - item.price * 15 / 100;
+        });
+        
+        console.log(products);
+        
+
+        //Задание 4
+
+        const products = [
+                {
+                    id: 3,
+                    price: 127,
+                    photos: [
+                        "1.jpg",
+                        "2.jpg",
+                    ]
+                },
+                {
+                    id: 5,
+                    price: 499,
+                    photos: []
+                },
+                {
+                    id: 10,
+                    price: 26,
+                    photos: [
+                        "3.jpg"
+                    ]
+                },
+                {
+                    id: 8,
+                    price: 78,
+                },
+            ];
+
+        let gallery = products.filter (item => 'photos' in item && item.photos.length > 0);
+
+        console.log(gallery);
+        */
+
+        //Урок 4
+
+        //Задание 1.1
+
+        //es5
+
+        function GardenTool(name, price) {
+            this.name = name;
+            this.price = price;
+            /*
+            this.makeDiscount = function (discount) {
+               this.price = this.price - (this.price * discount / 100);
+            }
+            */
+        }
+
+        GardenTool.prototype.makeDiscount = function (discount) {
+                this.price = this.price - (this.price * discount / 100);
+            }
+
+        let gardenTools = [
+            new GardenTool ('showel', 500),
+            new GardenTool ('rake', 300),
+        ]
+
+        for (let gardenTool of gardenTools) {
+            gardenTool.makeDiscount(25);
+        }
+
+         console.log(gardenTools);
+
+        /*
+        let tool1 = new GardenTool('showel', '500');
+        console.log(tool1.name);
+        console.log(tool1.price);
+
+        let tool2 = new GardenTool('rake', '300');
+        console.log(tool2.name);
+        console.log(tool2.price);
+        */
+
+        //es6
+
+        class HomeTool {
+            constructor (name, price) {
+                this.name = name;
+                this.price = price;
+            }
+
+             makeDiscount (discount) {
+                this.price = this.price - (this.price * discount / 100);
+            }
+        }
+
+        let homeTools = [
+                new HomeTool('shrewdriver', '200'),
+                new HomeTool('knife', '400'),
+            ]
+
+            for (let homeTool of homeTools) {
+                homeTool.makeDiscount(25);
+            }
+
+            console.log(homeTools);
+
+        /*
+        let htool1 = new GardenTool('shrewdriver', '200');
+        console.log(htool1.name);
+        console.log(htool1.price);
+
+        let htool2 = new GardenTool('knife', '400');
+        console.log(htool2.name);
+        console.log(htool2.price);
+        */
+
+        //Задание 1.2
+
+        //а)
+
+        //es5
+
+        function es5Post (author, text, date) {
+            this.author = author;
+            this.text = text;
+            this.date = date;
+        }
+
+        es5Post.prototype.edit = function (enterText) {
+            this.text = enterText;
+        }
+
+        let theStory = new es5Post('Булгаков', 'Записки на манжетах', '1923 г');
+
+        theStory.edit ('Собачье сердце');
+
+        console.log(theStory);
+
+        //es6
+        
+        class es6Post {
+            constructor (author, text, date) {
+                this.author = author;
+                this.text = text;
+                this.date = date;
+            }
+
+            edit (enterText) {
+                this.text = enterText;
+            }
+        }
+        
+        theStory = new es6Post('Булгаков', 'Записки на манжетах', '1923 г');
+
+        theStory.edit('Собачье сердце');
+
+        console.log(theStory);
+
+    </script>
+</body>
+
+</html>
