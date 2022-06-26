@@ -39,15 +39,23 @@
             },
         ];
 
-        let idPhotos = products.filter(function(product) {
-                return product.photos && product.photos.length > 0;
-            });
-            console.log(idPhotos);
-
-        /*let idPhotos = products.filter(function(product){
-            return product.includes(photos);
+        let idPhotos = products.filter(function (product) {
+            return product.photos && product.photos.length > 0;
         });
-        console.log(idPhotos);*/
+        console.log(idPhotos);
+
+        let prices = products.sort( (a, b) => a.price - b.price);
+        /*products.sort = (function (a, b) {
+            if (a.price > b.price) {
+                return -1;
+            }
+            if (b.price > a.price) {
+                return 1;
+            }
+            return 0;
+        });*/
+        console.log(prices);
+
     </script>
 </body>
 
