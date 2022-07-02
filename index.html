@@ -136,7 +136,7 @@
         //Задание 1.1
 
         //es5
-        
+
         /*
         function GardenTool(name, price) {
             this.name = name;
@@ -181,32 +181,52 @@
             }
 
             console.log(homeTools);
+            */
 
         //Задание 1.2
 
-        //а)
+        //а) и б)
 
         //es5
 
-        function es5Post (author, text, date) {
+        function Post(author, text, date) {
             this.author = author;
             this.text = text;
             this.date = date;
         }
 
-        es5Post.prototype.edit = function (enterText) {
+        Post.prototype.edit = function (enterText) {
             this.text = enterText;
         }
 
-        let theStory = new es5Post('Булгаков', 'Записки на манжетах', '1923 г');
+        function AttachedPost(author, text, date) {
+            Post.call(this, author, text, date);
+            this.highlighted = false;
+        }
+
+        AttachedPost.prototype = Object.create(Post.prototype);
+        AttachedPost.prototype.constructor = AttachedPost;
+
+        AttachedPost.prototype.makeTextHighlighted = function() {
+            this.highlighted = true;
+        };
+
+        const theStory = new AttachedPost('Булгаков', 'Записки на манжетах', '1923 г');
+
+        console.log(theStory);
+
+        theStory.makeTextHighlighted();
 
         theStory.edit ('Собачье сердце');
 
         console.log(theStory);
+        
+
 
         //es6
-        
-        class es6Post {
+
+        /*
+        class Es6Post {
             constructor (author, text, date) {
                 this.author = author;
                 this.text = text;
@@ -218,7 +238,7 @@
             }
         }
         
-        theStory = new es6Post('Булгаков', 'Записки на манжетах', '1923 г');
+        theStory = new Es6Post('Булгаков', 'Записки на манжетах', '1923 г');
 
         theStory.edit('Собачье сердце');
 
